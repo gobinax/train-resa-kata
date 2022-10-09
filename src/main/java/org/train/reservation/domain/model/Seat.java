@@ -1,3 +1,4 @@
+package org.train.reservation.domain.model;
 
 public class Seat {
     public final String coach;
@@ -11,5 +12,10 @@ public class Seat {
     public boolean equals(Object o) {
         Seat other = (Seat)o;
         return coach==other.coach && seatNumber==other.seatNumber;
+    }
+
+    @Override
+    public String toString() {
+        return coach + seatNumber;
     }
 }

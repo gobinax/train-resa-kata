@@ -1,3 +1,7 @@
+package org.train.reservation.domain.service;
+
+import org.train.reservation.domain.model.Seat;
+
 import java.util.List;
 
 public class Reservation {

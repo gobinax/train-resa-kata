@@ -1,3 +1,4 @@
+package org.train.reservation.domain.service;
 
 public class ReservationRequest {
 	public final String trainId;
@@ -7,5 +8,4 @@ public class ReservationRequest {
 		this.trainId = trainId;
         this.seatCount = seatCount;
     }
-
 }

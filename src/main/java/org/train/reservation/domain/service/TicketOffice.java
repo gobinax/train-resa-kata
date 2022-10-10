@@ -21,7 +21,7 @@ public class TicketOffice {
     }
 
     public Reservation makeReservation(ReservationRequest request) {
-        String bookingId = bookingReferences.provideBookingReference();
+        String bookingId = bookingReferences.retrieveBookingReference();
         Train train = trainDataGateway.getTrainData(request.trainId);
 
         double trainOccupancy = computeFutureTrainOccupancy(train, request.seatCount);

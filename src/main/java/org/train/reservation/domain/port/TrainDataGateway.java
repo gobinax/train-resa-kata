@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TrainDataGateway {
     Train getTrainData(String trainId);
-    void reserve(String trainId, List<Seat> seats, String bookingId);
+    Train reserve(String trainId, List<Seat> seats, String bookingId);
 }

@@ -22,7 +22,7 @@ public class TicketOfficeTest {
         // given
         String bookingId = "75bcd15";
         BookingReferences bookingReferences = mock(BookingReferences.class);
-        when(bookingReferences.provideBookingReference()).thenReturn(bookingId);
+        when(bookingReferences.retrieveBookingReference()).thenReturn(bookingId);
 
         String trainId = "galaxy_express_999";
         Train train = new Train(
@@ -52,7 +52,7 @@ public class TicketOfficeTest {
         // given
         String bookingId = "75bcd15";
         BookingReferences bookingReferences = mock(BookingReferences.class);
-        when(bookingReferences.provideBookingReference()).thenReturn(bookingId);
+        when(bookingReferences.retrieveBookingReference()).thenReturn(bookingId);
 
         String trainId = "galaxy_express_999";
         Train train = new Train(
@@ -86,7 +86,7 @@ public class TicketOfficeTest {
         // given
         String bookingId = "75bcd15";
         BookingReferences bookingReferences = mock(BookingReferences.class);
-        when(bookingReferences.provideBookingReference()).thenReturn(bookingId);
+        when(bookingReferences.retrieveBookingReference()).thenReturn(bookingId);
 
         String trainId = "galaxy_express_999";
 

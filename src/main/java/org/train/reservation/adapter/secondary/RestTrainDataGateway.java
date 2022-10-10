@@ -2,7 +2,6 @@ package org.train.reservation.adapter.secondary;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.train.reservation.domain.model.Seat;
@@ -16,11 +15,14 @@ import java.util.stream.Collectors;
 @Component
 public class RestTrainDataGateway implements TrainDataGateway {
 
-    @Autowired
-    private RestTemplate trainDataClient;
+    private final RestTemplate trainDataClient;
 
-    @Autowired
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
+
+    public RestTrainDataGateway(RestTemplate trainDataClient, ObjectMapper objectMapper) {
+        this.trainDataClient = trainDataClient;
+        this.objectMapper = objectMapper;
+    }
 
     @Override
     public Train getTrainData(String trainId) {

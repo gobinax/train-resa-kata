@@ -1,6 +1,5 @@
 package org.train.reservation.adapter.secondary;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.train.reservation.domain.port.BookingReferences;
@@ -8,8 +7,11 @@ import org.train.reservation.domain.port.BookingReferences;
 @Component
 public class RestBookingReferences implements BookingReferences {
 
-    @Autowired
-    private RestTemplate bookingReferenceClient;
+    private final RestTemplate bookingReferenceClient;
+
+    public RestBookingReferences(RestTemplate bookingReferenceClient) {
+        this.bookingReferenceClient = bookingReferenceClient;
+    }
 
     @Override
     public String retrieveBookingReference() {

@@ -1,6 +1,5 @@
 package org.train.reservation.adapter.primary;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.train.reservation.domain.service.Reservation;
@@ -10,8 +9,11 @@ import org.train.reservation.domain.service.TicketOffice;
 @Controller
 public class ReservationController {
 
-    @Autowired
-    private TicketOffice ticketOffice;
+    private final TicketOffice ticketOffice;
+
+    public ReservationController(TicketOffice ticketOffice) {
+        this.ticketOffice = ticketOffice;
+    }
 
     @PostMapping("/reserve")
     public Reservation reserve(ReservationRequestDto request) {

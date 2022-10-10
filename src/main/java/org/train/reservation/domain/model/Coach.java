@@ -2,27 +2,19 @@ package org.train.reservation.domain.model;
 
 import java.util.List;
 
-public class Coach {
+public record Coach(String coach, int totalSeatCount, List<Integer> availableSeats) {
 
-    private final String coach;
-    private final int totalSeatCount;
-    private final List<Integer> availableSeats;
+    private static final double MAX_COACH_OCCUPANCY_RATE = .7;
 
-    public Coach(String coach, int totalSeatCount, List<Integer> availableSeats) {
-        this.coach = coach;
-        this.totalSeatCount = totalSeatCount;
-        this.availableSeats = availableSeats;
+    public List<Seat> reserve(int seatCount) {
+        return availableSeats.stream().limit(seatCount).map(seatNumber -> new Seat(coach, seatNumber)).toList();
     }
 
-    public String getCoach() {
-        return coach;
+    public boolean occupancyUnderThreshold(int seatCount) {
+        return occupancy(seatCount) <= MAX_COACH_OCCUPANCY_RATE;
     }
 
-    public int getTotalSeatCount() {
-        return totalSeatCount;
-    }
-
-    public List<Integer> getAvailableSeats() {
-        return availableSeats;
+    public double occupancy(int seatCount) {
+        return (double) (totalSeatCount - availableSeats.size() + seatCount) / totalSeatCount;
     }
 }

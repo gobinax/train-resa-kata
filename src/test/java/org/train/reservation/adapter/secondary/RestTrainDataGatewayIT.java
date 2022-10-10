@@ -1,4 +1,4 @@
-package org.train.reservation.adpater.secondary;
+package org.train.reservation.adapter.secondary;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package org.train.reservation.adpater.secondary;
+package org.train.reservation.adapter.secondary;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;

@@ -1,4 +1,4 @@
-package org.train.reservation.adpater.secondary;
+package org.train.reservation.adapter.secondary;
 
 import org.apache.logging.log4j.util.Strings;
 import org.train.reservation.domain.model.Coach;

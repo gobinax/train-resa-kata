@@ -1,4 +1,4 @@
-package org.train.reservation.adpater.secondary;
+package org.train.reservation.adapter.secondary;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

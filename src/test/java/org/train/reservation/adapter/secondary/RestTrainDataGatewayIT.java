@@ -20,7 +20,7 @@ class RestTrainDataGatewayIT {
     void should_retrieve_train_data() {
         Train train = trainDataGateway.getTrainData("local_1000");
         assertThat(train).isNotNull();
-        assertThat(train.getCoaches()).isNotEmpty();
+        assertThat(train.coaches()).isNotEmpty();
     }
 
     @Test
@@ -30,6 +30,6 @@ class RestTrainDataGatewayIT {
                 List.of(new Seat("A", 1), new Seat("A", 2)),
                 "75bcd16");
         assertThat(train).isNotNull();
-        assertThat(train.getCoaches()).isNotEmpty();
+        assertThat(train.coaches()).isNotEmpty();
     }
 }

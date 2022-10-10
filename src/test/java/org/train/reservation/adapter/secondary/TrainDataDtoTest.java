@@ -24,9 +24,9 @@ class TrainDataDtoTest {
         Train train = trainDataDto.mapToTrain();
 
         // then
-        assertThat(train.getCoaches()).extracting(Coach::getCoach).containsExactly("A", "B");
-        assertThat(train.getCoaches()).extracting(Coach::getTotalSeatCount).containsExactly(8, 8);
-        assertThat(train.getCoaches()).extracting(Coach::getAvailableSeats).containsExactly(
+        assertThat(train.coaches()).extracting(Coach::coach).containsExactly("A", "B");
+        assertThat(train.coaches()).extracting(Coach::totalSeatCount).containsExactly(8, 8);
+        assertThat(train.coaches()).extracting(Coach::availableSeats).containsExactly(
                 List.of(6, 7, 8),
                 List.of(5, 6, 7, 8));
     }

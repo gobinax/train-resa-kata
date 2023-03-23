@@ -23,11 +23,13 @@ public class ReservationService {
 
     private static final double MAX_TRAIN_OCCUPANCY_RATE = .7;
 
-    @Autowired
-    private BookingReferenceGateway bookingReferenceGateway;
+    private final BookingReferenceGateway bookingReferenceGateway;
+    private final TrainDataGateway trainDataGateway;
 
-    @Autowired
-    private TrainDataGateway trainDataGateway;
+    public ReservationService(BookingReferenceGateway bookingReferenceGateway, TrainDataGateway trainDataGateway) {
+        this.bookingReferenceGateway = bookingReferenceGateway;
+        this.trainDataGateway = trainDataGateway;
+    }
 
     public Reservation makeReservation(ReservationRequest request) {
         String bookingId = bookingReferenceGateway.retrieveBookingReference();

@@ -1,5 +1,8 @@
 package org.train.reservation.pojo;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class Seat {
     private String coach;
     private Integer seat_number;
@@ -27,5 +30,10 @@ public class Seat {
 
     public void setBooking_reference(String booking_reference) {
         this.booking_reference = booking_reference;
+    }
+
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this, ToStringStyle.JSON_STYLE);
     }
 }

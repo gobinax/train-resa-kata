@@ -1,9 +1,9 @@
-package org.train.reservation.pojo;
+package org.train.reservation.gateway;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-public class Seat {
+public class SeatDto {
     private String coach;
     private Integer seat_number;
     private String booking_reference;

@@ -5,8 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import org.train.reservation.pojo.Seat;
-import org.train.reservation.pojo.Train;
+import org.train.reservation.model.Train;
 
 import java.util.List;
 import java.util.Map;
@@ -31,11 +30,11 @@ public class TrainDataGateway {
 
     private Train doGetTrainData(String trainId) throws JsonProcessingException {
         String jsonStringResponse = trainDataClient.getForObject("/data_for_train/" + trainId, String.class);
-        Train trainDto = objectMapper.readValue(jsonStringResponse, Train.class);
-        return trainDto;
+        TrainDto trainDataDto = objectMapper.readValue(jsonStringResponse, TrainDto.class);
+        return trainDataDto.mapToTrain();
     }
 
-    public Train reserve(String trainId, List<Seat> seats, String bookingId) {
+    public Train reserve(String trainId, List<String> seats, String bookingId) {
         try {
             return doReserve(trainId, seats, bookingId);
         } catch (Exception e) {
@@ -43,15 +42,14 @@ public class TrainDataGateway {
         }
     }
 
-    private Train doReserve(String trainId, List<Seat> seats, String bookingId) throws JsonProcessingException {
+    private Train doReserve(String trainId, List<String> seats, String bookingId) throws JsonProcessingException {
+
         String jsonStringResponse = trainDataClient.postForObject("/reserve", Map.of(
                 "train_id", trainId,
-                "seats", seats.stream()
-                        .map(seat -> seat.getSeat_number() + seat.getCoach())
-                        .collect(Collectors.joining(",", "[", "]")),
+                "seats", seats.stream().collect(Collectors.joining(",", "[", "]")),
                 "booking_reference", bookingId
         ), String.class);
-        Train trainDto = objectMapper.readValue(jsonStringResponse, Train.class);
-        return trainDto;
+        TrainDto trainDataDto = objectMapper.readValue(jsonStringResponse, TrainDto.class);
+        return trainDataDto.mapToTrain();
     }
 }

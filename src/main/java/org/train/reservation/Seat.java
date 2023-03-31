@@ -1,3 +1,4 @@
+package org.train.reservation;
 
 public class Seat {
     public final String coach;

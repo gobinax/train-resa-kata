@@ -1,3 +1,5 @@
+package org.train.reservation;
+
 import java.util.List;
 
 public class Reservation {
